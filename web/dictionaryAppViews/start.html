@@ -1,0 +1,38 @@
+<div class="-marginTop20"> 
+    <form name="startForm" novalidate ng-controller="StartFormController" class="startForm startForm--usingInputItems -useInputItemsFontSize16">
+        <div ng-show="isUserLogged" class="-centerTextH">
+            Вы вошли как <b>{{user.username}}</b>, <span ng-click="logout()" class="-action">сменить имя</span>
+        </div> 
+        <div ng-show="!isUserLogged">
+            <div class="-centerTextH">
+                <input type="text" placeholder="Введите имя" ng-model="username" required ng-pattern="usernamePattern" ng-minlength="usernameMinLength" ng-maxlength="usernameMaxLength" name="username" autocomplete= "off" class="inputItem">
+            </div>
+
+            <div ng-show="showError(startForm.username, 'required')" class="startForm__inputError -errorMessage -centerBlock">
+                Нужно ввести имя.
+            </div>
+            <!--div ng-show="showError(startForm.username, 'minlength')" class="startForm__inputError -errorMessage -centerBlock">
+                Имя слишком короткое.
+            </div-->
+            <div ng-show="showError(startForm.username, 'maxlength')" class="startForm__inputError -errorMessage -centerBlock">
+                Имя слишком длинное.
+            </div>
+            <div ng-show="showError(startForm.username, 'pattern')" class="startForm__inputError -errorMessage -centerBlock">
+                Недопустимое имя.
+            </div>
+
+            <div ng-show="isNeedShowProcess" class="-marginTop10 -centerTextH">
+                <img src="/images/loadingLine.gif" style="height : 19px; width : 180px;">
+            </div>
+        </div>
+
+        <div class="-marginTop20 -centerTextH">
+            <button ng-click="submitForm()" ng-disabled="!isCanSubmitForm()" class="inputItem -darkAzure -darkAzure--action">Начать тест</button>
+        </div>
+    </form>
+</div>
+  
+     
+     
+     
+    

@@ -1,0 +1,478 @@
+.-floatLeft {
+    float : left;
+}
+
+.-floatRight {
+    float : right;
+}
+
+.-stopFloat {
+    clear : both;
+    float : none;
+}
+
+.-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.-notVisible {
+    display : none;
+}
+
+.-hidden {
+    visibility : hidden;
+}
+
+.-inlineBlock {
+    display : inline-block;
+}
+
+.-table {
+    display : table;
+}
+
+.-tableRow {
+    display : table-row;
+}
+
+.-tableCell {
+    display: table-cell;
+}
+	
+/* Центрирование блока. Способ 1 */
+/* Для блока с таким классом нужно задать ширину */
+.-centerBlock {
+    margin-left : auto;
+    margin-right : auto;
+}
+
+
+/* Центрирование блока. Способ 2 */	
+.-centerOuter {
+    position : relative;
+    float : right;
+    right : 50%;
+}
+		
+.-centerInner {
+    position : relative;
+    left : 50%;
+}
+
+/* Центрирование блока. Способ 3 */
+.-centerTable {
+    display : table;
+    margin : 0 auto;
+}
+
+/* Центрирование текста */
+.-centerTextH {
+    text-align : center;
+}
+
+.-centerTextV {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.-centerTextHV {
+    display: table-cell;
+    vertical-align: middle;
+    text-align : center;
+}
+
+.-centerTableCellV {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.-centerTableCellHV {
+    display: table-cell;
+    vertical-align: middle;
+    text-align : center;
+}
+
+
+/******************************************************************************/
+
+table.tableAlignment {
+    height : 100%;
+    width : 100%;
+    border-collapse : collapse;
+}
+
+table.tableAlignment tr td {
+    border : none;
+    padding : 0px;
+}
+
+table.tableAlignment tr td.tableAlignment__leftTop {
+    text-align : left;
+    vertical-align : top;
+}
+
+table.tableAlignment tr td.tableAlignment__centerTop {
+    text-align : center;
+    vertical-align : top;
+}
+
+table.tableAlignment tr td.tableAlignment__rightTop {
+    text-align : right;
+    vertical-align : top;
+}
+
+table.tableAlignment tr td.tableAlignment__leftMiddle {
+    text-align : left;
+    vertical-align : middle;
+}
+
+table.tableAlignment tr td.tableAlignment__centerMiddle{
+    text-align : center;
+    vertical-align : middle;
+}
+
+table.tableAlignment tr td.tableAlignment__rightMiddle {
+    text-align : right;
+    vertical-align : middle;
+}
+
+table.tableAlignment tr td.tableAlignment__leftBottom {
+    text-align : left;
+    vertical-align : bottom;
+}
+
+table.tableAlignment tr td.tableAlignment__centerBottom {
+    text-align : center;
+    vertical-align : bottom;;
+}
+
+table.tableAlignment tr td.tableAlignment__rightBottom  {
+    text-align : right;
+    vertical-align : bottom;
+}
+
+/******************************************************************************/
+
+.-margin5 {
+    margin : 5px;
+}
+
+.-margin10 {
+    margin : 10px;
+}
+
+.-margin15 {
+    margin : 15px;
+}
+
+.-margin20 {
+    margin : 20px;
+}
+
+.-margin30 {
+    margin : 30px;
+}
+
+.-margin50 {
+    margin : 50px;
+}
+
+.-margin60 {
+    margin : 60px;
+}
+
+.-margin70 {
+    margin : 70px;
+}
+
+.-marginBottm5 {
+    margin-bottom : 5px;
+}
+
+.-marginBottom10 {
+    margin-bottom : 10px;
+}
+
+.-marginBottom15 {
+    margin-bottom : 15px;
+}
+
+.-marginBottom20 {
+    margin-bottom : 20px;
+}
+
+.-marginBottom30 {
+    margin-bottom : 30px;
+}
+
+.-marginBottom50 {
+    margin-bottom : 50px;
+}
+
+.-marginBottom60 {
+    margin-bottom : 60px;
+}
+
+.-marginBottom70 {
+    margin-bottom : 70px;
+}
+
+.-marginTop5 {
+    margin-top : 5px;
+}
+
+.-marginTop10 {
+    margin-top : 10px;
+}
+
+.-marginTop15 {
+    margin-top : 15px;
+}
+
+.-marginTop20 {
+    margin-top : 20px;
+}
+
+.-marginTop30 {
+    margin-top : 30px;
+}
+
+.-marginTop50 {
+    margin-top : 50px;
+}
+
+.-marginTop60 {
+    margin-top : 60px;
+}
+
+.-marginTop70 {
+    margin-top : 70px;
+}
+
+.-marginLeft5 {
+    margin-left : 5px;
+}
+
+.-marginLeft10 {
+    margin-left : 10px;
+}
+
+.-marginLeft15 {
+    margin-left : 15px;
+}
+
+.-marginLeft20 {
+    margin-left : 20px;
+}
+
+.-marginLeft30 {
+    margin-left : 30px;
+}
+
+.-marginLeft50 {
+    margin-left : 50px;
+}
+
+.-marginLeft60 {
+    margin-left : 60px;
+}
+
+.-marginLeft70 {
+    margin-left : 70px;
+}
+
+.-marginRight5 {
+    margin-right : 5px;
+}
+
+.-marginRight10 {
+    margin-right : 10px;
+}
+
+.-marginRight15 {
+    margin-right : 15px;
+}
+
+.-marginRight20 {
+    margin-right : 20px;
+}
+
+.-marginRight30 {
+    margin-right : 30px;
+}
+
+.-marginRight50 {
+    margin-right : 50px;
+}
+
+.-marginRight60 {
+    margin-right : 60px;
+}
+
+.-marginRight70 {
+    margin-right : 70px;
+}
+
+/******************************************************************************/
+
+.-padding5 {
+    padding : 5px;
+}
+
+.-padding10 {
+    padding : 10px;
+}
+
+.-padding15 {
+    padding : 15px;
+}
+
+.-padding20 {
+    padding : 20px;
+}
+
+.-padding30 {
+    padding : 30px;
+}
+
+.-padding50 {
+    padding : 50px;
+}
+
+.-padding60 {
+   padding : 60px;
+}
+
+.-padding70 {
+    padding: 70px;
+}
+
+.-paddingBottom5 {
+    padding-bottom : 5px;
+}
+
+.-paddingBottom10 {
+    padding-bottom : 10px;
+}
+
+.-paddingBottom15 {
+    padding-bottom : 15px;
+}
+
+.-paddingBottom20 {
+    padding-bottom : 20px;
+}
+
+.-paddingBottom30 {
+    padding-bottom : 30px;
+}
+
+.-paddingBottom50 {
+    padding-bottom : 50px;
+} 
+    
+.-paddingBottom60 {
+    padding-bottom : 60px;
+}
+
+.-paddingBottom70 {
+    padding-bottom : 70px;
+}
+
+.-paddingTop5 {
+    padding-top : 5px;
+} 
+
+.-paddingTop10 {
+    padding-top : 10px;
+}
+
+.-paddingTop15 {
+    padding-top : 15px;
+}
+
+.-paddingTop20 {
+    padding-top : 20px;
+}
+
+.-paddingTop30 {
+    padding-top : 30px;
+}
+
+.-paddingTop50 {
+    padding-top : 50px;
+}
+
+.-paddingTop60 {
+    padding-top : 60px;
+}
+
+.-paddingTop70 {
+    padding-top : 70px;
+}
+
+.-paddingLeft5 {
+    padding-left : 5px;
+}
+
+.-paddingLeft10 {
+    padding-left : 10px;
+}
+
+.-paddingLeft15 {
+    padding-left : 15px;
+}
+
+.-paddingLeft20 {
+    padding-left : 20px;
+}
+
+.-paddingLeft30 {
+    padding-left : 30px;
+}
+
+.-paddingLeft50 {
+    padding-left : 50px;
+} 
+    
+.-paddingLeft60 {
+    padding-left : 60px;
+}
+
+.-paddingLeft70 {
+    padding-left : 70px;
+}
+
+.-paddingRight5 {
+    padding-right : 5px;
+}
+
+.-paddingRight10 {
+    padding-right  : 10px;
+}
+
+.-paddingRight15 {
+    padding-right : 15px;
+}
+
+.-paddingRight20 {
+    padding-right  : 20px;
+}
+
+.-paddingRight30 {
+    padding-right : 30px;
+}
+
+.-paddingRight50 {
+    padding-right : 50px;
+} 
+    
+.-paddingRight60 {
+    padding-right : 60px;
+}
+
+.-paddingLeft70 {
+    padding-right : 70px;
+}
