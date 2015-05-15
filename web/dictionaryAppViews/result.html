@@ -1,0 +1,24 @@
+<div class="-marginTop20 -paddingBottom20">
+    <div ng-if="results.length === 0" class="-centerTextH">
+        Не найдено ни одного результата.
+    </div>
+    <div ng-if="results.length !== 0">
+        <table class="sheet -centerBlock">
+            <thead>
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Баллы</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in results">
+                    <td>{{r.username}}</td>
+                    <td>{{r.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pages -marginTop20">
+            <a ng-repeat="pageHref in pageHrefs track by $index" ng-href="{{pageHref}}" class="pages__page -darkAzure -darkAzure--action">{{$index + 1}}</a>
+        </div>
+    </div>
+</div>
+  

@@ -1,0 +1,24 @@
+<div class="-marginTop20 -paddingBottom20">
+    <div ng-if="errors.length === 0" class="-centerTextH">
+        Ничего не найдено.
+    </div>
+    <div ng-if="errors.length !== 0">
+        <table class="sheet -centerBlock">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Количество ошибок</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in errors">
+                    <td>{{e.word}}</td>
+                    <td>{{e.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pages -marginTop20">
+            <a ng-repeat="pageHref in pageHrefs track by $index" ng-href="{{pageHref}}" class="pages__page -darkAzure -darkAzure--action">{{$index + 1}}</a>
+        </div>
+    </div>
+</div>
+  

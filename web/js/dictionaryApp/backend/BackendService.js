@@ -9,6 +9,9 @@
         var _logoutUrl = null;
         var _testDataUrl = null;
         var _answerUrl = null;
+        var _restartTestUrl = null;
+        var _resultsUrl = null;
+        var _errorsUrl = null;
 
         this.setUserUrl = function(value) {
             _userUrl = value;
@@ -30,7 +33,19 @@
             _answerUrl = value;
         };
         
-        this.$get  = ['$http', '$q', 'InfoService', function($http, $q, InfoService) {                      
+        this.setRestartTestUrl = function(value) {
+            _restartTestUrl = value;
+        };
+        
+        this.setResultsUrl = function(value) {
+            _resultsUrl = value;
+        };
+        
+        this.setErrorsUrl = function(value) {
+            _errorsUrl = value;
+        };
+        
+        this.$get  = ['$http', '$q', '$route', 'InfoService', function($http, $q, $route, InfoService) {                      
             
             var service = {};
             
@@ -52,8 +67,14 @@
                 });
             };
             
+            service.logout = function() {
+                return $http({
+                    'method' : 'GET',
+                    'url' : _logoutUrl
+                });
+            };
+            
             service.getTestData = function() {
-                console.log(_testDataUrl);
                 return $http({
                     'method' : 'GET',
                     'url' : _testDataUrl
@@ -63,10 +84,39 @@
                 });
             };
             
-            service.logout = function() {
+            service.answer = function(answer) {
+                return $http({
+                    'method' : 'POST',
+                    'url' : _answerUrl,
+                    'data' : { 'answer' : answer }
+                });
+            };
+            
+            service.restartTest = function() {
                 return $http({
                     'method' : 'GET',
-                    'url' : _logoutUrl
+                    'url' : _restartTestUrl,
+                });
+            };
+            
+            service.getResults = function() {
+
+                return $http({
+                    'method' : 'POST',
+                    'url' : _resultsUrl,
+                    'data' : { 'page' : $route.current.params.page }
+                }).then(function(response) {
+                    return response.data;
+                });
+            };
+            
+            service.getErrors = function() {
+                return $http({
+                    'method' : 'POST',
+                    'url' : _errorsUrl,
+                    'data' : { 'page' : $route.current.params.page }
+                }).then(function(response) {
+                    return response.data;
                 });
             };
             

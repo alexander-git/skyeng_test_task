@@ -14,8 +14,6 @@ class WordService {
     public function getRandomWord($exceptIds = null) {
         $db = Yii::$app->db;
         
-        //Yii::error(print_r($exceptIds, true) ); //TODO# Удалить
-        
         if ($exceptIds === null || empty($exceptIds) ) {
             $notInCondition = '';
         } else {
@@ -27,13 +25,10 @@ class WordService {
         }
         
         $possibleIds = $db->createCommand('SELECT id FROM {{%word}}'.$notInCondition)->queryColumn();
-
         $min = 0;
         $max = count($possibleIds) - 1;
         $rand = mt_rand($min, $max);
         $id = $possibleIds[$rand];
-        
-        //Yii::error('min='.$min.' max='.$max.' rand='.$rand.' id='.$id); //TODO# Удалить
         
         $word = Word::findOne($id);
         return $word;

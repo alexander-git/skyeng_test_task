@@ -22,11 +22,15 @@
                 _user = value;
             };
             
+            service.hasUser = function() {
+                return (_user !== null) && (_user.username !== undefined);
+            };
+            
             service.setTestData = function(value) {
                 _testData = value;
             };
             
-            service.getTestData = function(value) {
+            service.getTestData = function() {
                 return _testData;
             };
             

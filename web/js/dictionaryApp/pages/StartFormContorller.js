@@ -21,8 +21,8 @@
         $scope.usernamePattern = /^[a-zA-Z][a-zA-Z0-9-_\.]*$/;
         
         // Используется в виде когда выполняется ajax-запрос.
-        $scope.isNeedShowProcess = false;
-        $scope.isNeedShowErrorMessage = false;
+        $scope.needShowProcess = false;
+        $scope.needShowErrorMessage = false;
         
         $scope.showError = function(ngModelController, error) {
             if (!ngModelController.$dirty) {
@@ -31,17 +31,13 @@
             return ngModelController.$error[error];
         };
         
-        $scope.isCanSubmitForm = function() {
+        $scope.canSubmitForm = function() {
             // Если пользователь уже вошёл и его имя было сохранено раньше
             // или имя в форме введено верно, то може отправлять
             // запрос на начало теста.
             return isUserLogged() || ($scope.startForm.$dirty && $scope.startForm.$valid);
         };
-        
-        $scope.hideErrorMessage = function() {
-            $scope.isNeedShowErrorMessage = false;
-        };
-        
+                
         $scope.submitForm = function() {
             var username;
             if (isUserLogged() ) { // Если пользователь вошёл используем сохранённое имя. 
@@ -61,23 +57,22 @@
         };
         
         function isUserLogged() {
-            var user = InfoService.getUser();
-            return (user !== null) && (user.username !== undefined);
+            return InfoService.hasUser();
         }
        
         function beforeAjaxRequest() {
-            $scope.isNeedShowProcess = true;
-            $scope.isNeedShowErrorMessage = false;
+            $scope.needShowProcess = true;
+            $scope.needShowErrorMessage = false;
         }
 
         function afterAjaxRequest() {
-            $scope.isNeedShowProcess = false;
+            $scope.needShowProcess = false;
         }
 
         function showErrorMessage() {
-            $scope.isNeedShowErrorMessage = true;
+            $scope.needShowErrorMessage = true;
             setTimeout(
-                function() { $scope.isNeedShowErrorMessage = false; }, 
+                function() { $scope.needShowErrorMessage = false; }, 
                 DURATION_OF_SHOW_ERROR_MESSAGE
             );
         }
@@ -103,6 +98,6 @@
     StartFormController.$inject = injectParams;
     
     
-    angular.module('start').controller('StartFormController', StartFormController);
+    angular.module('pages').controller('StartFormController', StartFormController);
     
 })(); 

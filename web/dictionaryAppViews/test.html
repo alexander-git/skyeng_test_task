@@ -1,7 +1,43 @@
-<div class="-marginTop20"> 
-    
-    
-    
-    
+<div class="testContent -centerBlock -marginTop20 -paddingBottom20">
+
+    <div class="topPanel -clearfix -marginBottom50">
+        <div class="topPanel__left">
+            <button ng-click="restartTest()" class="topPanel__restartButton -darkAzure -darkAzure--action">Начать тест заново</button>
+        </div>
+        <div class="topPanel__right">
+            <div> Верных ответов : {{successCount}}</div>
+            <div class="-marginTop10">Допущенно ошибок : {{errorCount}}</div>
+        </div>
+    </div>
+
+    <div ng-show="needShowProcess" class="-marginBottom20 -centerTextH">
+        <img src="/images/loadingLine.gif" class="processLine">
+    </div>
+
+    <div ng-show="needShowQuestion">
+        <div class="question">
+            <span class="question__number">{{questionNumber}}.</span>
+            <span ng-if="isEnglishWord" class="question__text">Переведите с английского на русский слово</span> 
+            <span ng-if="!isEnglishWord" class="question__text">Переведите с русского на английский слово</span> 
+            <span class="question__word">"{{word}}"</span>
+        </div>
+
+        <div ng-show="needShowWrongAnswerMessage" class="wrongAnswerMessage -marginTop10 -errorMessage -centerBlock">
+            Ответ неверный
+        </div>
+
+        <div class="variants -centerBlock -clearfix -marginTop10">
+            <div ng-repeat="answerItem in answerItems" class="variants__variantContainer">
+                <div ng-if="!answerItem.isWrong" ng-click="selectAnswer(answerItem.text)" class="variants__variant variants__variant--unknown">{{answerItem.text}}</div>
+                <div ng-if="answerItem.isWrong" class="variants__variant variants__variant--wrong">{{answerItem.text}}</div>
+            </div> 
+        </div>
+    </div>
+
+    <div ng-show="needShowFinishStatistic" class="finishStatistic -marginTop20">
+        Тест завершён! <br> 
+        Количество баллов - <span class="finishStatistic__pointsNumber">{{successCount}}</span>
+    </div>
+
 </div>
-    
+  

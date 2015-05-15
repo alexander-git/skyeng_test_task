@@ -2,13 +2,15 @@
 
 use yii\helpers\Html;
 use app\assets\CommonCssAsset;
-use app\assets\DictionaryAppAsset;
+use app\assets\DictionaryAppCssAsset;
+use app\assets\DictionaryAppJsAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 CommonCssAsset::register($this);
-DictionaryAppAsset::register($this);
+DictionaryAppCssAsset::register($this);
+DictionaryAppJsAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

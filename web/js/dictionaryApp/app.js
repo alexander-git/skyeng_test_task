@@ -3,8 +3,7 @@ var app = angular.module('dictionaryApp', [
     'main',
     'info',
     'backend',
-    'start',
-    'test'
+    'pages'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -16,13 +15,13 @@ app.config(['$routeProvider', function($routeProvider) {
             user : ['BackendService', function(BackendService) {
                 return BackendService.getUser();
             }]
-        }
-        
+        } 
     });
     
     $routeProvider.when('/test', {
         templateUrl : '/dictionaryAppViews/index.html',
         contentUrl : '/dictionaryAppViews/test.html', 
+        controller : 'TestController',
         resolve : {
             user : ['BackendService', function(BackendService) {
                 return BackendService.getUser();
@@ -30,42 +29,60 @@ app.config(['$routeProvider', function($routeProvider) {
             testData : ['BackendService', function(BackendService) {
                 return BackendService.getTestData();
             }]
-        }
-        
+        } 
     });
-        
+    
+    $routeProvider.when('/results', {
+        redirectTo : '/results/page/1'
+    });
+    
+    $routeProvider.when('/results/page/:page', {
+        templateUrl : '/dictionaryAppViews/index.html',
+        contentUrl : '/dictionaryAppViews/result.html', 
+        controller : 'ResultController',
+        resolve : {
+            user : ['BackendService', function(BackendService) {
+                return BackendService.getUser();
+            }],
+            resultsData : ['BackendService', function(BackendService) {
+                return BackendService.getResults();
+            }]
+        } 
+    });
+    
+    $routeProvider.when('/errors', {
+        redirectTo : '/errors/page/1'
+    });
+    
+    $routeProvider.when('/errors/page/:page', {
+        templateUrl : '/dictionaryAppViews/index.html',
+        contentUrl : '/dictionaryAppViews/error.html', 
+        controller : 'ErrorController',
+        resolve : {
+            user : ['BackendService', function(BackendService) {
+                return BackendService.getUser();
+            }],
+            errorsData : ['BackendService', function(BackendService) {
+                return BackendService.getErrors();
+            }]
+        } 
+    });
+    
     $routeProvider.otherwise({
        redirectTo : '/' 
     });
+    
 }]);
 
-app.constant('userUrl', dictionaryAppUrls.user);
-app.constant('startTestUrl', dictionaryAppUrls.startTest);
-app.constant('logoutUrl', dictionaryAppUrls.logout);
-app.constant('testDataUrl', dictionaryAppUrls.testData);
-app.constant('answerUrl', dictionaryAppUrls.answer);
-
-app.config([
-    'BackendServiceProvider', 
-    'userUrl',
-    'startTestUrl',
-    'logoutUrl',
-    'testDataUrl',
-    'answerUrl',
-    function(
-        BackendServiceProvider, 
-        userUrl,
-        startTestUrl,
-        logoutUrl,
-        testDataUrl,
-        answerUrl
-    ) 
-    {
-        BackendServiceProvider.setUserUrl(userUrl);
-        BackendServiceProvider.setStartTestUrl(startTestUrl);
-        BackendServiceProvider.setLogoutUrl(logoutUrl);
-        BackendServiceProvider.setTestDataUrl(testDataUrl);
-        BackendServiceProvider.setAnswerUrl(answerUrl);
+app.config(['BackendServiceProvider', function(BackendServiceProvider) {
+        BackendServiceProvider.setUserUrl(dictionaryAppUrls.user);
+        BackendServiceProvider.setStartTestUrl(dictionaryAppUrls.startTest);
+        BackendServiceProvider.setLogoutUrl(dictionaryAppUrls.logout);
+        BackendServiceProvider.setTestDataUrl(dictionaryAppUrls.testData);
+        BackendServiceProvider.setAnswerUrl(dictionaryAppUrls.answer);
+        BackendServiceProvider.setRestartTestUrl(dictionaryAppUrls.restartTest);
+        BackendServiceProvider.setResultsUrl(dictionaryAppUrls.results);
+        BackendServiceProvider.setErrorsUrl(dictionaryAppUrls.errors);
     }
 ]);
 
@@ -76,17 +93,17 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
 
 app.run(['$rootScope', function($rootScope) {
     // При смене адреса показываем, что идёт процесс загрузки.
-    $rootScope.isNeedShowLoading = false;
+    $rootScope.needShowLoading = false;
     
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-        $rootScope.isNeedShowLoading = true;
+        $rootScope.needShowLoading = true;
     });
     
     $rootScope.$on('$routeChangeSuccess', function(event, next, current) {
-        $rootScope.isNeedShowLoading = false;
+        $rootScope.needShowLoading = false;
     });
     
     $rootScope.$on('$routeChangeError', function(event, next, current) {
-        $rootScope.isNeedShowLoading = false;
+        $rootScope.needShowLoading = false;
     });
 }]); 

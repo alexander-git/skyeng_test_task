@@ -1,4 +1,4 @@
-<div class="-marginTop20"> 
+<div class="-marginTop20">
     <form name="startForm" novalidate ng-controller="StartFormController" class="startForm startForm--usingInputItems -useInputItemsFontSize16">
         <div ng-show="isUserLogged" class="-centerTextH">
             Вы вошли как <b>{{user.username}}</b>, <span ng-click="logout()" class="-action">сменить имя</span>
@@ -21,13 +21,13 @@
                 Недопустимое имя.
             </div>
 
-            <div ng-show="isNeedShowProcess" class="-marginTop10 -centerTextH">
-                <img src="/images/loadingLine.gif" style="height : 19px; width : 180px;">
+            <div ng-show="needShowProcess" class="-marginTop10 -centerTextH">
+                <img src="/images/loadingLine.gif" class="processLine">
             </div>
         </div>
 
         <div class="-marginTop20 -centerTextH">
-            <button ng-click="submitForm()" ng-disabled="!isCanSubmitForm()" class="inputItem -darkAzure -darkAzure--action">Начать тест</button>
+            <button ng-click="submitForm()" ng-disabled="!canSubmitForm()" class="inputItem -darkAzure -darkAzure--action">Начать тест</button>
         </div>
     </form>
 </div>
