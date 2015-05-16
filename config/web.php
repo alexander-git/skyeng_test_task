@@ -25,7 +25,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],      
         'errorHandler' => [
-            //'errorAction' => 'site/error',
+
         ], 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -36,27 +36,12 @@ $config = [
                 ],
             ],
         ],
-         /*
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
-        */
-        
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
 ];
 
 if (YII_ENV_DEV) {
-    
     // Оставим пока debug-версию, но отключим Yii-Debugger.
     //$config['bootstrap'][] = 'debug';
     //$config['modules']['debug'] = 'yii\debug\Module';

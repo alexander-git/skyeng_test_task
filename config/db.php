@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=skyengtest',
-    'username' => 'root',
-    'password' => 'pass',
+    'dsn' => 'mysql:host=;dbname=',
+    'username' => '',
+    'password' => '',
     'charset' => 'utf8',
-    'tablePrefix' => 'skyeng_'
+    'tablePrefix' => ''
 ];
