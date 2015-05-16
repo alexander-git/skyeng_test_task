@@ -77,7 +77,7 @@
         function showQuestionIfNeed(testData) {
             _testFinished = (testData.testFinished !== undefined) && (testData.testFinished === true);
             // Если тест завершён или не выслано необходимых данных, то вопрос не показываем.
-            var needShowQuestion = !_testFinished || (testData.word !== undefined);
+            var needShowQuestion = !_testFinished && (testData.word !== undefined);
             if (needShowQuestion) {
                 $scope.word = testData.word;
                 $scope.isEnglishWord = testData.isEnglishWord;
