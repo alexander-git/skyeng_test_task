@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Response;
+use yii\helpers\Json;
 use app\utils\Test;
 
 class TestController extends \yii\web\Controller
@@ -26,7 +27,7 @@ class TestController extends \yii\web\Controller
     }
     
     public function actionStartTest() {
-        $params = json_decode(trim(file_get_contents('php://input') ), true); //TODO# Исправить.
+        $params = Json::decode(trim(file_get_contents('php://input') ), true);
         $username = isset($params['username']) ? $params['username'] : null;
         if ($username === null) {
             throw new \yii\base\Exception();
@@ -58,7 +59,7 @@ class TestController extends \yii\web\Controller
     }
     
     public function actionAnswer() {
-        $params = json_decode(trim(file_get_contents('php://input') ), true); //TODO# Исправить.
+        $params = Json::decode(trim(file_get_contents('php://input') ), true);
         
         $test = $this->getTest();
         if ($test->isFinished() ) {

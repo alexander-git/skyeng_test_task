@@ -50,6 +50,15 @@
             var service = {};
             
             service.getUser = function() {
+                
+                if (InfoService.hasUser() ) {
+                    // Если информация о пользователе уже храниться, то запрос 
+                    // на сервер не выполняем и просто возвращаем выполненное обещание.
+                    var task = $q.defer();
+                    task.resolve(InfoService.getUser() );
+                    return task.promise;
+                }
+                
                 return $http({
                     'method' : 'GET',
                     'url' : _userUrl
@@ -100,7 +109,6 @@
             };
             
             service.getResults = function() {
-
                 return $http({
                     'method' : 'POST',
                     'url' : _resultsUrl,
@@ -110,11 +118,14 @@
                 });
             };
             
-            service.getErrors = function() {
+            service.getErrors = function() {  
                 return $http({
                     'method' : 'POST',
                     'url' : _errorsUrl,
-                    'data' : { 'page' : $route.current.params.page }
+                    'data' : { 
+                        'page' : $route.current.params.page,
+                        'type' : $route.current.params.type
+                    }
                 }).then(function(response) {
                     return response.data;
                 });

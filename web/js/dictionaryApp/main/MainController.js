@@ -5,9 +5,9 @@
         this.text = text;
     };
     
-    var injectParams = ['$scope', '$location', 'BackendService', 'InfoService'];
+    var injectParams = ['$scope', '$location', '$window', 'BackendService', 'InfoService'];
     
-    var MainController = function($scope, $location, BackendService, InfoService) {
+    var MainController = function($scope, $location, $window, BackendService, InfoService) {
         
         repaintMenuItems();
         
@@ -17,7 +17,7 @@
             logoutResult.success(function(data, status, headers, config) {
                 logoutSuccess();
             }).error(function(data, status, headers, config) {
-  
+                $window.alert('Произошла ошибка!');
             });
             
         };
@@ -26,9 +26,9 @@
             InfoService.setUser(null);
             repaintMenuItems();
             // Если выход производиться странице которые не должен видеть 
-            // не залогиненный пользователь, то перенаправим на главную
+            // незалогиненный пользователь, то перенаправим на главную
             var currentUrl = $location.url();
-            if (currentUrl === '/test' || currentUrl === '/finish') {
+            if (currentUrl === '/test') {
                 $location.url('/');
             }
         }
@@ -46,8 +46,9 @@
                     menuItems.push(new MenuItem('#/test', 'Тест') );
                 }
             }
-            menuItems.push(new MenuItem('#/results', 'Результаты') );
-            menuItems.push(new MenuItem('#/errors', 'Ошибки') );
+            
+            menuItems.push(new MenuItem('#/results/page/1', 'Результаты') );
+            menuItems.push(new MenuItem('#/errors/simple/page/1', 'Ошибки') );
 
             $scope.menuItems = menuItems;
 
@@ -55,8 +56,7 @@
             if (isUserLogged) {
                 $scope.user = InfoService.getUser();
             }
-        }
-                
+        }         
     };
     
    

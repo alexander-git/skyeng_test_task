@@ -1,23 +1,20 @@
-<div class="-marginTop20">
-    <form name="startForm" novalidate ng-controller="StartFormController" class="startForm startForm--usingInputItems -useInputItemsFontSize16">
+<div>
+    <form name="startForm" novalidate ng-controller="StartFormController" class="startForm startForm--usingInputItems">
         <div ng-show="isUserLogged" class="-centerTextH">
-            Вы вошли как <b>{{user.username}}</b>, <span ng-click="logout()" class="-action">сменить имя</span>
+            Вы вошли как <b>{{user.username}}</b>, <span ng-click="logout()" class="-displayAsHref">сменить имя</span>
         </div> 
         <div ng-show="!isUserLogged">
             <div class="-centerTextH">
                 <input type="text" placeholder="Введите имя" ng-model="username" required ng-pattern="usernamePattern" ng-minlength="usernameMinLength" ng-maxlength="usernameMaxLength" name="username" autocomplete= "off" class="inputItem">
             </div>
 
-            <div ng-show="showError(startForm.username, 'required')" class="startForm__inputError -errorMessage -centerBlock">
+            <div ng-show="showError(startForm.username, 'required')" class="startForm__inputError -errorMessage">
                 Нужно ввести имя.
             </div>
-            <!--div ng-show="showError(startForm.username, 'minlength')" class="startForm__inputError -errorMessage -centerBlock">
-                Имя слишком короткое.
-            </div-->
-            <div ng-show="showError(startForm.username, 'maxlength')" class="startForm__inputError -errorMessage -centerBlock">
+            <div ng-show="showError(startForm.username, 'maxlength') && !showError(startForm.username, 'pattern')" class="startForm__inputError -errorMessage">
                 Имя слишком длинное.
             </div>
-            <div ng-show="showError(startForm.username, 'pattern')" class="startForm__inputError -errorMessage -centerBlock">
+            <div ng-show="showError(startForm.username, 'pattern') && !showError(startForm.username, 'minlength')" class="startForm__inputError -errorMessage">
                 Недопустимое имя.
             </div>
 
@@ -27,7 +24,7 @@
         </div>
 
         <div class="-marginTop20 -centerTextH">
-            <button ng-click="submitForm()" ng-disabled="!canSubmitForm()" class="inputItem -darkAzure -darkAzure--action">Начать тест</button>
+            <button ng-click="submitForm()" ng-disabled="!canSubmitForm()" class="inputItem -darkBlue -darkBlue--action">Начать тест</button>
         </div>
     </form>
 </div>

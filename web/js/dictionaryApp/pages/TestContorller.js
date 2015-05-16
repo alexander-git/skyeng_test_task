@@ -11,12 +11,14 @@
     
     var injectParams = [
         '$scope', 
+        '$window',
         'BackendService',
         'InfoService'
     ];
      
     var TestController = function(
         $scope, 
+        $window,
         BackendService, 
         InfoService
     ) 
@@ -73,7 +75,9 @@
         }
 
         function showQuestionIfNeed(testData) {
-            var needShowQuestion = (testData.word !== undefined);
+            _testFinished = (testData.testFinished !== undefined) && (testData.testFinished === true);
+            // Если тест завершён или не выслано необходимых данных, то вопрос не показываем.
+            var needShowQuestion = !_testFinished || (testData.word !== undefined);
             if (needShowQuestion) {
                 $scope.word = testData.word;
                 $scope.isEnglishWord = testData.isEnglishWord;
@@ -119,11 +123,8 @@
             _testFinished = (testData.testFinished !== undefined) && (testData.testFinished === true);
             if (_testFinished) {
                 $scope.successCount = testData.successCount;
-                $scope.needShowQuestion = false;
             }
-            
             $scope.needShowFinishStatistic = _testFinished; 
-            
         }
         
         function selectAnswerSuccess(data) {
@@ -134,7 +135,7 @@
         
         function selectAnswerError() {
              afterAjaxRequest();
-             alert('Произошла ошибка!');
+             $window.alert('Произошла ошибка!');
         }
         
         function restartTestSuccess(data) {
@@ -145,7 +146,7 @@
         
         function restartTestError() {
              afterAjaxRequest();
-             alert('Произошла ошибка!');
+             $window.alert('Произошла ошибка!');
         }
                            
     };

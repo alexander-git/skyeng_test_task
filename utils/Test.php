@@ -8,6 +8,8 @@ use app\services\result\ResultService;
 
 use yii\helpers\ArrayHelper;
 
+// Хранит состояние теста, генерирует новые вопросы и готовит эти данные
+// в форме пригодной для отправке пользователю.
 class Test {
     
     const ANSWERS_COUNT = 4; // Количество предлагаемых вариантов ответа.

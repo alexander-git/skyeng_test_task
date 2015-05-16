@@ -12,6 +12,11 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : '/dictionaryAppViews/index.html',
         contentUrl : '/dictionaryAppViews/start.html', 
         resolve : {
+            // Напрямую данные полученные через resolve 
+            // в контроллер(опредёлйнный в параметре controller) внедряются 
+            // не всегда. BackendService кроме возврата данных, также 
+            // сохраняет их в InfoService, который уже в свою очередь может быть
+            // внедрён в любой нужный контроллер.
             user : ['BackendService', function(BackendService) {
                 return BackendService.getUser();
             }]
@@ -51,10 +56,10 @@ app.config(['$routeProvider', function($routeProvider) {
     });
     
     $routeProvider.when('/errors', {
-        redirectTo : '/errors/page/1'
+        redirectTo : '/errors/simple/page/1'
     });
     
-    $routeProvider.when('/errors/page/:page', {
+    $routeProvider.when('/errors/:type/page/:page', {
         templateUrl : '/dictionaryAppViews/index.html',
         contentUrl : '/dictionaryAppViews/error.html', 
         controller : 'ErrorController',
@@ -87,12 +92,14 @@ app.config(['BackendServiceProvider', function(BackendServiceProvider) {
 ]);
 
 app.run(['$rootScope', '$route', function($rootScope, $route) {
-        // Используется в index.html
+        // Используется в '/dictionaryAppViews/index.html'.
         $rootScope.$route = $route;
 }]);
 
+// При смене адреса показываем, что идёт процесс загрузки.
+/*
 app.run(['$rootScope', function($rootScope) {
-    // При смене адреса показываем, что идёт процесс загрузки.
+    
     $rootScope.needShowLoading = false;
     
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
@@ -106,4 +113,5 @@ app.run(['$rootScope', function($rootScope) {
     $rootScope.$on('$routeChangeError', function(event, next, current) {
         $rootScope.needShowLoading = false;
     });
-}]); 
+}]);
+*/

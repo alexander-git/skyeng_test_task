@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "{{%result}}".
  *
@@ -13,35 +11,28 @@ use Yii;
  */
 class Result extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%result}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['username', 'points'], 'required'],
+            [['username'], 'required'],
+            [['username'], 'string', 'min' => 3, 'max' => 30],
+            
+            [['points'], 'required'],
             [['points'], 'integer'],
-            [['username'], 'string', 'max' => 255]
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'username' => 'Username',
-            'points' => 'Points',
+            'id' => 'Id',
+            'username' => 'Имя пользователя',
+            'points' => 'Баллы',
         ];
     }
 }

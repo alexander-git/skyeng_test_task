@@ -23,7 +23,7 @@ class ResultService {
     }
     
     public function getResultsAsArray($limit = null, $offset = 0) {
-        $q = Result::find()->asArray()->select(['username', 'points'])->orderBy(['points' => SORT_DESC]);
+        $q = Result::find()->asArray()->select(['username', 'points'])->orderBy(['points' => SORT_DESC, 'username' => SORT_ASC]);
         if ($limit !== null) {
             $q->offset($offset)->limit($limit);
         } 

@@ -2,63 +2,34 @@
     border-radius: 10px 10px 10px 10px; 
 }
 
+/******************************************************************************/
+
 .-blue {
     color : #ECF7FF;
     background-color : #33A7CF;
 }
 
-.-darkBlue {
+/******************************************************************************/
+
+.-azure {
     color : #EFF;
     background-color : #00809E;  
 }
 
-.-darkBlue--hrefDecoration a {
-    color : #CDD;
-    text-decoration : underline;
-} 
+/******************************************************************************/
 
-.-darkBlue--hrefDecoration a:hover {
-    color : #FFF;
-}
-
-.-darkAzure {
+.-darkBlue {
     color : #CEE;
     background-color : #006A86; 
 }
 
-.-darkAzure--action {
+.-darkBlue--action {
     cursor : pointer;
 }
 
-.-darkAzure--action:hover {
+.-darkBlue--action:hover {
     background-color : #00607A;
     color : #FFF;
-}
-
-.-roundedCornersTop { 
-    border-radius: 10px 10px 0px 0px; 
-    border-bottom : none;
-}
-
-.-roundedCornersBottom {     
-    border-radius: 0px 0px 10px 10px;
-    border-top : none;
-}
-
-.-roundedCornersLeft {
-    border-radius: 10px 0px 0px 10px; 
-}
-
-.-roundedCornersRight {
-    border-radius: 0px 10px 10px 0px; 
-}
-
-.-roundedCorners10 {
-    border-radius: 10px 10px 10px 10px; 
-}
-
-.-roundedCornersSmall {
-    border-radius: 5px 5px 5px 5px; 
 }
 
 /******************************************************************************/
@@ -75,292 +46,13 @@
 
 /******************************************************************************/
 
-.-white {
-    color : #000;
-    background-color : #FFFFFF;
-}
-
-.-green {
-    color : #FFF;
-    background-color : #60C022;
-}
-
-/*--------------------------------------*/
-.-pear {
-    color : #FFF;
-    background-color : #9FD000; 
-}
-
-/*--------------------------------------*/
-.-darkPear {
-    color : #FFF;
-    background-color : #76B800;
-}
-
-/*--------------------------------------*/
-.-yellowGreen {
-    color : #FFF;
-    background-color : #C2D200;
-}
-
-/*--------------------------------------*/
-.-blue {
-    color : #ECF7FF;
-    background-color : #33A7CF;
-}
-
-.-blue--hrefDecoration a {
-    color : #C0EAFF;
-    text-decoration : underline;
-}
-
-.-blue--hrefDecoration  a:hover {
-    color : #FFF;
-}
-
-/*--------------------------------------*/
-
-.-blueRightBorder2 {
-    border-right : 2px solid #33A7CF;
-}
-
-/*--------------------------------------*/
-.-cyan { 
-    color : #000;
-    background-color : #D8EFEF;
-}
-
-.-cyan--linkDecoration .link,
-.-cyan--hrefDecoration a {
-    color : #145;
-    text-decoration : underline;
-}   
-
-.-cyan--linkDecoration .link:hover,
-.-cyan--hrefDecoration a:hover {
-    color : #00AFCF;
-}
-
-/*--------------------------------------*/
-.-azure {
-    color : #EFF;
-    background-color : #00809E;  
-}
-
-.-azure--action {
-    /* Отличается от color и background-color в -azure*/
-    color : #EFF; 
-    background-color : #007695;
-}
-
-.-azure--action:hover {
-    background-color : #76B800;
-    color : #FFF;
-}
-
-.-azure--disabledAction {
-    /* Отличается от color в -azure*/
-    color : #CEE;
-    background-color : #00809E; 
-}
-
-.-azure--linkDecoration .link,
-.-azure--hrefDecoration a {
-    color : #CDD;
-    text-decoration : underline;
-} 
-
-.-azure--linkDecoration .link:hover,
-.-azure--hrefDecoration a:hover {
-    color : #FFF;
-}
-
-.-azure--activeHrefDecoration {
-    
-}
-
-.-azure--activeHrefDecoration a.-activeHref {
-    color : #DEE;
-    background-color : #33A3C9;
-    text-decoration : none;
-}
-
-.-azure--activeHrefDecoration a.-activeHref:hover {
-    color : #DEE;
-}
-
-
-/*--------------------------------------*/
-
-ul.-azureList {
- 
-}
-
-ul.-azureList li {
-    background-color : #007695;
-}
-
-/*--------------------------------------*/
-
-ul.-azureList--hrefDecoration {
-    
-}
-
-ul.-azureList--hrefDecoration  li {
-
-}
-
-ul.-azureList--hrefDecoration li:hover {
-    background-color : #006A86; 
-}
-
-ul.-azureList--hrefDecoration li a {
-    color : #C8E3E9;
-    text-decoration : none;
-}
-
-ul.-azureList--hrefDecoration li a:hover {
-   color : #FFF;
-}
-
-ul.-azureList--hrefDecoration li.active,
-ul.-azureList--hrefDecoration li.active:hover {
-    background-color : #90D0E0;
-}
-
-ul.-azureList--hrefDecoration li.active a,
-ul.-azureList--hrefDecoration li.active:hover a{
-    color : #167; 
-}
-
-/*--------------------------------------*/
-
-ul.-azureList--hrefDecorationByImages  li {
-    background-image:  url('images/twoCyanArrows.gif') ;
-    background-position : 95% center; 
-    background-repeat : no-repeat;
-    padding-left : 0px;
-}
-
-ul.-azureList--hrefDecorationByImages  li:hover {
-    background-image:  url('images/twoArrows.gif') ;
-}
-
-ul.-azureList--hrefDecorationByImages li.active,
-ul.-azureList--hrefDecorationByImages li.active:hover {
-    background-image:  url('images/twoBlueArrows.gif') ;
-}
-
-/*--------------------------------------*/
-
-.-darkAzure {
-    color : #CEE;
-    background-color : #006A86; 
-}
-
-.-darkAzure--action {
-    
-}
-
-.-darkAzure--action:hover {
-    background-color : #00607A;
-    color : #FFF;
-}
-
-/*--------------------------------------*/
-
-.-darkAzureBorder3 {
-    border : 3px solid #006A86; 
-}
-
-/*--------------------------------------*/
-
-.-paleBlue {
-    color : #000;
-    background-color : #C3E3E9;
-}
-
-
-/*--------------------------------------*/
-.-grayBlue {
-    background-color : #8ACADA;
-    color : #122;
-}
-
-.-grayBlue--action {
-
-}
-
-.-grayBlue--action:hover {
-    background-color : #0087AA;
-    color : #FFF;
-}
-
-
-/*--------------------------------------*/
-
-.-useGrayBlueSpans span { 
-    color : #000;
-    background-color : #8ACADA;
-}
-
-.-useGrayBlueSpans--activeDecoration span.-active {
-    background-color : #006A86; 
-}
-
-/*--------------------------------------*/
-
-.-darkGreenBlueHrefDecoration a {
-    color : #145;
-}
-
-.-darkGreenBlueHrefDecoration a:hover {
-    color : #007F9F;
-}
-
-/******************************************************************************/
-
-.-line1 {
-    display : block;
-    height : 1px;
-}
-
-.-line2 {
-    display : block;
-    height : 2px;
-}
-
-.-line3 {
-    display : block;
-    height : 3px;
-}
-
-.-line4 {
-    display : block;
-    height : 4px;
-}
-
-.-line5 {
-    display : block;
-    height : 5px;
-}
-
-/******************************************************************************/
-
-.-fontSize16 {
-    font-size : 16px;
-}
-
-.-fontSize18 {
-    font-size : 18px;
-}
-
-.-fontSize20 {
-    font-size : 20px;
-}
-
-/******************************************************************************/
-
 .-cursorPointer {
+    cursor : pointer;
+}
+
+/******************************************************************************/
+
+.-displayAsHref {
+    text-decoration : underline;
     cursor : pointer;
 }

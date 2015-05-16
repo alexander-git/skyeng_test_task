@@ -1,15 +1,13 @@
 <div class="loading -azure" ng-show="needShowLoading"></div>
 <div ng-controller="MainController">
-    <div class="menu -darkBlue -darkBlue -clearfix">
-     
+    <div class="menu -azure -clearfix">  
         <a ng-repeat="menuItem in menuItems" class="menu__item -floatLeft" ng-href="{{menuItem.href}}">
            {{menuItem.text}}
         </a> 
-        <div ng-if="isUserLogged > 0" ng-click="logout()" class="menu__item -floatRight">
+        <div ng-if="isUserLogged" ng-click="logout()" class="menu__item -floatRight">
             Выйти({{user.username}})
         </div>
     </div>
-
     <div class="content -blue -roundedCorners10">
         <div ng-include="$route.current.contentUrl"></div>
     </div>

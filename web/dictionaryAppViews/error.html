@@ -1,23 +1,33 @@
-<div class="-marginTop20 -paddingBottom20">
-    <div ng-if="errors.length === 0" class="-centerTextH">
+<div>
+    <div ng-if="errors.length === 0" class="-centerTextH -marginBottom20">
         Ничего не найдено.
     </div>
-    <div ng-if="errors.length !== 0">
-        <table class="sheet -centerBlock">
+    <div class="-centerTextH">
+         
+        <a ng-show="needShowSimpleErrors" ng-href="#/errors/simple/page/{{currentPage}}" class="errorType errorType--active -darkBlue -darkBlue--action">Обычные</a>
+        <a ng-show="needShowSimpleErrors" ng-href="#/errors/composite/page/1" class="errorType">Составные</a>
+        
+        <a ng-show="!needShowSimpleErrors" ng-href="#/errors/simple/page/1" class="errorType">Обычные</a>
+        <a ng-show="!needShowSimpleErrors" ng-href="#/errors/composite/page/{{currentPage}}" class="errorType errorType--active -darkBlue -darkBlue--action">Составные</a>
+    </div>
+    <div ng-if="errors.length !== 0" class="-marginTop20">
+        <table class="spreadsheet -centerBlock">
             <thead>
                 <tr>
                     <th>Слово</th>
+                    <th ng-if="!needShowSimpleErrors">Ответ пользователя</th>
                     <th>Количество ошибок</th>
             </thead>
             <tbody>
                 <tr ng-repeat="e in errors">
                     <td>{{e.word}}</td>
+                    <td ng-if="!needShowSimpleErrors">{{e.answer}}</td>
                     <td>{{e.quantity}}</td>
                 </tr>
             </tbody>
         </table>
-        <div class="pages -marginTop20">
-            <a ng-repeat="pageHref in pageHrefs track by $index" ng-href="{{pageHref}}" class="pages__page -darkAzure -darkAzure--action">{{$index + 1}}</a>
+        <div ng-show="pageHrefs.length > 1" class="pages -marginTop20">
+            <a ng-repeat="pageHref in pageHrefs track by $index" ng-href="{{pageHref}}" class="pages__page -darkBlue -darkBlue--action">{{$index + 1}}</a>
         </div>
     </div>
 </div>

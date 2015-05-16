@@ -1,10 +1,11 @@
 (function() {
     
-    var DURATION_OF_SHOW_ERROR_MESSAGE = 5000;
+    var _requestExecuted = false;
     
     var injectParams = [
         '$scope', 
         '$location',
+        '$window',
         'BackendService',
         'InfoService'
     ];
@@ -12,14 +13,19 @@
     var StartFormController = function(
         $scope, 
         $location,
+        $window,
         BackendService, 
         InfoService
     ) 
     {
         $scope.usernameMinLength = 3;
-        $scope.usernameMaxLength = 20;        
-        $scope.usernamePattern = /^[a-zA-Z][a-zA-Z0-9-_\.]*$/;
+        $scope.usernameMaxLength = 30;  
         
+        // Создадим шаблон для имени пользователя.
+        var fs = "%&,!'`=#@$;~\"\\|\\:\\?\\+\\*\\(\\)\\[\\]\\^\\/\\\\"; // Запрещённые символы.
+        var startFinishFs = "\\d-_\\." + fs;
+        $scope.usernamePattern = new RegExp("^[^"+startFinishFs+"][^"+fs+"]*[^"+startFinishFs+"]$"); 
+                
         // Используется в виде когда выполняется ajax-запрос.
         $scope.needShowProcess = false;
         $scope.needShowErrorMessage = false;
@@ -32,8 +38,11 @@
         };
         
         $scope.canSubmitForm = function() {
+            if (_requestExecuted) {
+                return false;
+            }
             // Если пользователь уже вошёл и его имя было сохранено раньше
-            // или имя в форме введено верно, то може отправлять
+            // или имя в форме введено верно, то можно отправлять
             // запрос на начало теста.
             return isUserLogged() || ($scope.startForm.$dirty && $scope.startForm.$valid);
         };
@@ -61,20 +70,13 @@
         }
        
         function beforeAjaxRequest() {
+            _requestExecuted = true;
             $scope.needShowProcess = true;
-            $scope.needShowErrorMessage = false;
         }
 
         function afterAjaxRequest() {
+            _requestExecuted = false;
             $scope.needShowProcess = false;
-        }
-
-        function showErrorMessage() {
-            $scope.needShowErrorMessage = true;
-            setTimeout(
-                function() { $scope.needShowErrorMessage = false; }, 
-                DURATION_OF_SHOW_ERROR_MESSAGE
-            );
         }
         
         // Вызывается при нормальном ответе сервера, 
@@ -83,14 +85,14 @@
             if (data.success !== undefined) {
                 $location.url('/test');
             } else {
-                showErrorMessage();
+                $window.alert('Начать тест не удалось!');
             }
         }
         
         // Вызывается при ошибке связанной с запросом на сервер.
         function startTestError() {
             afterAjaxRequest();
-            showErrorMessage();
+            $window.alert('Произошла ошибка!');
         }
                 
     };

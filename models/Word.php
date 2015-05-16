@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "{{%word}}".
  *
@@ -13,34 +11,29 @@ use Yii;
  */
 class Word extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%word}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['eng', 'rus'], 'required'],
-            ['eng', 'unique'],
-            ['rus', 'unique'],
-            [['eng', 'rus'], 'string', 'max' => 255]
+            [['eng'], 'required'],
+            [['eng'], 'string', 'max' => 255],
+            [['eng'], 'unique'],
+
+            [['rus'], 'required'],
+            [['rus'], 'string', 'max' => 255],
+            [['rus'], 'unique'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
+
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Id',
             'eng' => 'Eng',
             'rus' => 'Rus',
         ];

@@ -27,26 +27,39 @@ class ErrorService {
         }
     }
     
-    public function getErrorsAsArray($limit = null, $offset = 0) {
+    // Параметр $needCompositeErrors отвечает за то какие ошибки нужно выбрать.
+    // Если он равен false, то выбираются слово и количество ошибок 
+    // при переводе этого слова. Если $needCompositeErrors = true, то выбирается 
+    // пара "слово-ответ пользователя" и количество случаев когда при переводе
+    // этого слова был выбран именно такой неправильный ответ.
+    public function getErrorsAsArray($needCompositeErrors = false, $limit = null, $offset = 0) {
         $db = Yii::$app->db;
         
         $limitCondition = "";
         if ($limit !== null) {
             $limitCondition = "LIMIT $offset, $limit";   
         }
+        $select = "word";
+        if ($needCompositeErrors) {
+            $select .= ", answer";
+        }
         
         $errors = $db->createCommand(
-            "SELECT word, count(id) as quantity FROM {{%error}}". 
-            "    GROUP BY word ORDER BY quantity DESC $limitCondition"
+            "SELECT $select, COUNT(id) as quantity FROM {{%error}}". 
+            "    GROUP BY $select ORDER BY quantity DESC, word ASC $limitCondition"
         )->queryAll();
 
         
         return $errors;
     }
     
-    public function getErrorsCount() {
+    public function getErrorsCount($needCompositeErrors = false) {
         $db = Yii::$app->db;
-        return intval($db->createCommand('SELECT COUNT(DISTINCT word) FROM {{%error}}')->queryScalar());  
+        $distinctCondition = "DISTINCT word";
+        if ($needCompositeErrors) {
+            $distinctCondition .= ", answer";
+        }
+        return intval($db->createCommand("SELECT COUNT($distinctCondition) FROM {{%error}}")->queryScalar());  
     }
     
 }

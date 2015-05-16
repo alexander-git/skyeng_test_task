@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "{{%error}}".
  *
@@ -19,33 +17,29 @@ class Error extends \yii\db\ActiveRecord
     const RUS_TYPE = 1; // Ошибка при переводе с русского на английский.
     
     
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return '{{%error}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['word', 'answer', 'type'], 'required'],
+            [['word'], 'required'],
+            [['word'], 'string', 'max' => 255],
+            
+            [['answer'], 'required'],
+            [['answer'], 'string', 'max' => 255],
+            
+            [['type'], 'required'],
             [['type'], 'integer'],
-            [['word', 'answer'], 'string', 'max' => 255]
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Id',
             'word' => 'Слово',
             'answer' => 'Ответ пользователя',
             'type' => 'Тип ошибки',

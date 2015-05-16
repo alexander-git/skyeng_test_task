@@ -32,7 +32,7 @@
     margin-left : auto;
     margin-right : auto;
     width  : 600px;
-    padding : 10px;
+    padding : 20px;
     
     font-size : 18px;
 }
@@ -46,6 +46,9 @@
 .startForm .startForm__inputError {
     margin-top : 10px;
     width : 380px;
+    
+    margin-left : auto;
+    margin-right : auto;
 }
 
 
@@ -70,12 +73,6 @@
     color : #CEE;
     background-color : #00809E;  
     cursor : default;
-}
-
-/******************************************************************************/
-.-action {
-    text-decoration : underline;
-    cursor : pointer;
 }
 
 /******************************************************************************/
@@ -224,31 +221,19 @@
 
 /******************************************************************************/
 
-table.sheet {
+table.spreadsheet {
     border-collapse : collapse;
     padding : 0px;
 }
 
-table.sheet tr {
-    
-}
-
-table.sheet td,
-table.sheet th {
+table.spreadsheet td,
+table.spreadsheet th {
     border : 3px solid #006A86;
-        
+   
     padding : 7px;
     text-align : center;
     
     font-size : 18px;
-}
-
-table.sheet th {
-    
-}
-
-table.sheet td {
-    
 }
 
 /******************************************************************************/
@@ -258,8 +243,13 @@ table.sheet td {
 }
 
 .pages .pages__page {
+    display : inline-block;
+    
+    margin-top : 5px;
+    margin-bottom : 5px;
     margin-left : 5px;
     margin-right : 5px;
+    
     
     padding-top : 5px;
     padding-bottom : 5px;
@@ -268,4 +258,21 @@ table.sheet td {
     
     font-size : 18px;
     text-decoration : none; 
+}
+
+/******************************************************************************/
+
+.errorType {
+    display : inline-block;
+    margin-left : 10px;
+    margin-right : 10px;
+    padding : 10px;
+    
+    color : #FFF;
+    text-decoration : underline;
+}
+
+.errorType--active {
+    text-decoration : none;
+    border-radius : 10px;
 }

@@ -12,7 +12,7 @@ class CommonCssAsset extends AssetBundle
     public $css = [
         'decoration.css',
         'control.css',
-        'items.css'
+        'inputItems.css'
     ];
 
 }

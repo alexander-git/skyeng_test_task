@@ -25,22 +25,6 @@
     visibility : hidden;
 }
 
-.-inlineBlock {
-    display : inline-block;
-}
-
-.-table {
-    display : table;
-}
-
-.-tableRow {
-    display : table-row;
-}
-
-.-tableCell {
-    display: table-cell;
-}
-	
 /* Центрирование блока. Способ 1 */
 /* Для блока с таким классом нужно задать ширину */
 .-centerBlock {
@@ -83,76 +67,6 @@
     text-align : center;
 }
 
-.-centerTableCellV {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.-centerTableCellHV {
-    display: table-cell;
-    vertical-align: middle;
-    text-align : center;
-}
-
-
-/******************************************************************************/
-
-table.tableAlignment {
-    height : 100%;
-    width : 100%;
-    border-collapse : collapse;
-}
-
-table.tableAlignment tr td {
-    border : none;
-    padding : 0px;
-}
-
-table.tableAlignment tr td.tableAlignment__leftTop {
-    text-align : left;
-    vertical-align : top;
-}
-
-table.tableAlignment tr td.tableAlignment__centerTop {
-    text-align : center;
-    vertical-align : top;
-}
-
-table.tableAlignment tr td.tableAlignment__rightTop {
-    text-align : right;
-    vertical-align : top;
-}
-
-table.tableAlignment tr td.tableAlignment__leftMiddle {
-    text-align : left;
-    vertical-align : middle;
-}
-
-table.tableAlignment tr td.tableAlignment__centerMiddle{
-    text-align : center;
-    vertical-align : middle;
-}
-
-table.tableAlignment tr td.tableAlignment__rightMiddle {
-    text-align : right;
-    vertical-align : middle;
-}
-
-table.tableAlignment tr td.tableAlignment__leftBottom {
-    text-align : left;
-    vertical-align : bottom;
-}
-
-table.tableAlignment tr td.tableAlignment__centerBottom {
-    text-align : center;
-    vertical-align : bottom;;
-}
-
-table.tableAlignment tr td.tableAlignment__rightBottom  {
-    text-align : right;
-    vertical-align : bottom;
-}
-
 /******************************************************************************/
 
 .-margin5 {
@@ -175,6 +89,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
     margin : 30px;
 }
 
+.-margin40 {
+    margin : 40px;
+}
+
 .-margin50 {
     margin : 50px;
 }
@@ -185,38 +103,6 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-margin70 {
     margin : 70px;
-}
-
-.-marginBottm5 {
-    margin-bottom : 5px;
-}
-
-.-marginBottom10 {
-    margin-bottom : 10px;
-}
-
-.-marginBottom15 {
-    margin-bottom : 15px;
-}
-
-.-marginBottom20 {
-    margin-bottom : 20px;
-}
-
-.-marginBottom30 {
-    margin-bottom : 30px;
-}
-
-.-marginBottom50 {
-    margin-bottom : 50px;
-}
-
-.-marginBottom60 {
-    margin-bottom : 60px;
-}
-
-.-marginBottom70 {
-    margin-bottom : 70px;
 }
 
 .-marginTop5 {
@@ -239,6 +125,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
     margin-top : 30px;
 }
 
+.-marginTop40 {
+    margin-top : 40px;
+}
+
 .-marginTop50 {
     margin-top : 50px;
 }
@@ -249,6 +139,42 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-marginTop70 {
     margin-top : 70px;
+}
+
+.-marginBottom5 {
+    margin-bottom : 5px;
+}
+
+.-marginBottom10 {
+    margin-bottom : 10px;
+}
+
+.-marginBottom15 {
+    margin-bottom : 15px;
+}
+
+.-marginBottom20 {
+    margin-bottom : 20px;
+}
+
+.-marginBottom30 {
+    margin-bottom : 30px;
+}
+
+.-marginBottom40 {
+    margin-bottom : 40px;
+}
+
+.-marginBottom50 {
+    margin-bottom : 50px;
+}
+
+.-marginBottom60 {
+    margin-bottom : 60px;
+}
+
+.-marginBottom70 {
+    margin-bottom : 70px;
 }
 
 .-marginLeft5 {
@@ -269,6 +195,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-marginLeft30 {
     margin-left : 30px;
+}
+
+.-marginLeft40 {
+    margin-left : 40px;
 }
 
 .-marginLeft50 {
@@ -301,6 +231,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-marginRight30 {
     margin-right : 30px;
+}
+
+.-marginRight40 {
+    margin-right : 40px;
 }
 
 .-marginRight50 {
@@ -337,6 +271,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
     padding : 30px;
 }
 
+.-padding40 {
+    padding : 40px;
+}
+
 .-padding50 {
     padding : 50px;
 }
@@ -347,38 +285,6 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-padding70 {
     padding: 70px;
-}
-
-.-paddingBottom5 {
-    padding-bottom : 5px;
-}
-
-.-paddingBottom10 {
-    padding-bottom : 10px;
-}
-
-.-paddingBottom15 {
-    padding-bottom : 15px;
-}
-
-.-paddingBottom20 {
-    padding-bottom : 20px;
-}
-
-.-paddingBottom30 {
-    padding-bottom : 30px;
-}
-
-.-paddingBottom50 {
-    padding-bottom : 50px;
-} 
-    
-.-paddingBottom60 {
-    padding-bottom : 60px;
-}
-
-.-paddingBottom70 {
-    padding-bottom : 70px;
 }
 
 .-paddingTop5 {
@@ -401,6 +307,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
     padding-top : 30px;
 }
 
+.-paddingTop40 {
+    padding-top : 40px;
+}
+
 .-paddingTop50 {
     padding-top : 50px;
 }
@@ -411,6 +321,42 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-paddingTop70 {
     padding-top : 70px;
+}
+
+.-paddingBottom5 {
+    padding-bottom : 5px;
+}
+
+.-paddingBottom10 {
+    padding-bottom : 10px;
+}
+
+.-paddingBottom15 {
+    padding-bottom : 15px;
+}
+
+.-paddingBottom20 {
+    padding-bottom : 20px;
+}
+
+.-paddingBottom30 {
+    padding-bottom : 30px;
+}
+
+.-paddingBottom40 {
+    padding-bottom : 40px;
+}
+
+.-paddingBottom50 {
+    padding-bottom : 50px;
+} 
+    
+.-paddingBottom60 {
+    padding-bottom : 60px;
+}
+
+.-paddingBottom70 {
+    padding-bottom : 70px;
 }
 
 .-paddingLeft5 {
@@ -431,6 +377,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-paddingLeft30 {
     padding-left : 30px;
+}
+
+.-paddingLeft40 {
+    padding-left : 40px;
 }
 
 .-paddingLeft50 {
@@ -463,6 +413,10 @@ table.tableAlignment tr td.tableAlignment__rightBottom  {
 
 .-paddingRight30 {
     padding-right : 30px;
+}
+
+.-paddingRight40 {
+    padding-right : 40px;
 }
 
 .-paddingRight50 {
