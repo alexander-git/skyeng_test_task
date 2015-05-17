@@ -1,2 +1,2 @@
-angular.module('main', []);
+angular.module('main', ['url', 'info', 'backend']);
 

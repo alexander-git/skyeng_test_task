@@ -11,12 +11,14 @@ class DictionaryAppJsAsset extends AssetBundle
     public $baseUrl = '@web/js/dictionaryApp';
     
     public $js = [
-        'main/main.js',
-        'main/MainController.js',
+        'url/url.js',
+        'url/UrlService.js',
         'info/info.js',
         'info/InfoService.js',
         'backend/backend.js',
         'backend/BackendService.js',
+        'main/main.js',
+        'main/MainController.js',
         'pages/pages.js',
         'pages/StartFormContorller.js',
         'pages/TestContorller.js',

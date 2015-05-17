@@ -1,1 +1,1 @@
-angular.module('pages', []);
+angular.module('pages', ['url', 'info', 'backend']);

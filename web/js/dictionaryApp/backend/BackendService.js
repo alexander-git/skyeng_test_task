@@ -2,6 +2,21 @@
             
     var injectParams = [];
       
+    // Используется для выполнения запросов на сервер. Некоторые методы
+    // возвращают результат предназначенный для использования в свойстве  
+    // 'resolve' при настройке маршуртов у $routeProvider. Также некоторые
+    // методы дополнительно после успешного выполнения запроса устанавливают 
+    // свойства объекта InfoService. Который в свою очередь используется в
+    // контроллерах. Поэтому не все методы BackendService возвращают 
+    // promise характерный для $http(т.е имеющие методы success и error).
+    // Чтобы сделать BackendService ответственным только за отправку запросов 
+    // (в этом случае все его методы будут возвращать $http-promise) можно
+    // либо перенести then и работу с InfoService в функции используемые в
+    // resolve, либо(так как эта логика будет повторяться) создать ещё один 
+    // сервис(например ResolveService), который будет с помощью BackendService 
+    // делать запросы предназначенные только для получения данных для свойства
+    // 'resolve', обрабатывать эти данные если нужно и обновлять информацию в
+    // InfoService.
     var BackendServiceProvider = function() {
         
         var _userUrl = null;
@@ -49,8 +64,7 @@
             
             var service = {};
             
-            service.getUser = function() {
-                
+            service.getUser = function() {        
                 if (InfoService.hasUser() ) {
                     // Если информация о пользователе уже храниться, то запрос 
                     // на сервер не выполняем и просто возвращаем выполненное обещание.
@@ -80,7 +94,7 @@
                 return $http({
                     'method' : 'GET',
                     'url' : _logoutUrl
-                });
+                });            
             };
             
             service.getTestData = function() {
@@ -104,15 +118,15 @@
             service.restartTest = function() {
                 return $http({
                     'method' : 'GET',
-                    'url' : _restartTestUrl,
+                    'url' : _restartTestUrl
                 });
             };
             
             service.getResults = function() {
                 return $http({
-                    'method' : 'POST',
+                    'method' : 'GET',
                     'url' : _resultsUrl,
-                    'data' : { 'page' : $route.current.params.page }
+                    'params' : { 'page' : $route.current.params.page }
                 }).then(function(response) {
                     return response.data;
                 });
@@ -120,9 +134,9 @@
             
             service.getErrors = function() {  
                 return $http({
-                    'method' : 'POST',
+                    'method' : 'GET',
                     'url' : _errorsUrl,
-                    'data' : { 
+                    'params' : { 
                         'page' : $route.current.params.page,
                         'type' : $route.current.params.type
                     }

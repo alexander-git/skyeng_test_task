@@ -4,6 +4,7 @@ namespace app\services\error;
 
 use Yii;
 use app\models\Error;
+use app\services\SaveResult;
 
 class ErrorService {
 
@@ -21,9 +22,9 @@ class ErrorService {
             $error->type = Error::RUS_TYPE;
         }
         if ($error->save() ) {
-            return $error;
+            return new SaveResult($error, true);
         } else {
-            return -1;
+            return new SaveResult($error, false);
         }
     }
     

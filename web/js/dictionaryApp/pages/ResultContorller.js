@@ -1,19 +1,15 @@
 (function() {
     
 
-    var injectParams = [
-        '$scope', 
-        'resultsData'
-    ];
+    var injectParams = ['$scope', 'UrlService', 'resultsData'];
      
-    var ResultController = function($scope, resultsData)  {
-        $scope.results = resultsData.results;
-        
+    var ResultController = function($scope, UrlService, resultsData)  {
         var pageHrefs = [];
         for (var i = 1; i <= resultsData.numberPages; i++) {
-            pageHrefs.push('#/results/page/' + i);
+            pageHrefs.push(UrlService.getResultsHrefUrl(i) );
         }
         $scope.pageHrefs = pageHrefs;
+        $scope.results = resultsData.results;
     };
     
     ResultController.$inject = injectParams;

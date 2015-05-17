@@ -1,6 +1,7 @@
 var app = angular.module('dictionaryApp', [
     'ngRoute',
     'main',
+    'url',
     'info',
     'backend',
     'pages'
@@ -13,10 +14,12 @@ app.config(['$routeProvider', function($routeProvider) {
         contentUrl : '/dictionaryAppViews/start.html', 
         resolve : {
             // Напрямую данные полученные через resolve 
-            // в контроллер(опредёлйнный в параметре controller) внедряются 
-            // не всегда. BackendService кроме возврата данных, также 
-            // сохраняет их в InfoService, который уже в свою очередь может быть
-            // внедрён в любой нужный контроллер.
+            // в контроллер внедряются не всегда. BackendService кроме возврата 
+            // данных в случае успешного выполнения запроса, также сохраняет их 
+            // в InfoService, который уже  в свою очередь может быть 
+            // внедрён в любой нужный контроллер. Так сделано потому, что эти
+            // данные могут быть нужны в нескольких контроллерах 
+            // на одной странице.
             user : ['BackendService', function(BackendService) {
                 return BackendService.getUser();
             }]

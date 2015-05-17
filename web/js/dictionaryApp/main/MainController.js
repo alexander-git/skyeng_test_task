@@ -5,9 +5,16 @@
         this.text = text;
     };
     
-    var injectParams = ['$scope', '$location', '$window', 'BackendService', 'InfoService'];
-    
-    var MainController = function($scope, $location, $window, BackendService, InfoService) {
+    var injectParams = [
+        '$scope', 
+        '$location', 
+        '$window', 
+        'BackendService', 
+        'InfoService',
+        'UrlService'
+    ];
+        
+    var MainController = function($scope, $location, $window, BackendService, InfoService, UrlService) {
         
         repaintMenuItems();
         
@@ -18,38 +25,24 @@
                 logoutSuccess();
             }).error(function(data, status, headers, config) {
                 $window.alert('Произошла ошибка!');
-            });
-            
+            });  
         };
-        
-        function logoutSuccess() {
-            InfoService.setUser(null);
-            repaintMenuItems();
-            // Если выход производиться странице которые не должен видеть 
-            // незалогиненный пользователь, то перенаправим на главную
-            var currentUrl = $location.url();
-            if (currentUrl === '/test') {
-                $location.url('/');
-            }
-        }
         
         function repaintMenuItems() {
             var currentUrl = $location.url();
-            var onStartPage = currentUrl === '/';
+            var onStartPage = currentUrl === UrlService.getStartUrl();
             var isUserLogged = InfoService.hasUser();
 
             var menuItems = [];
             if (!onStartPage) {
                 if (!isUserLogged) {
-                    menuItems.push(new MenuItem('#/', 'Тест') );
+                    menuItems.push(new MenuItem(UrlService.getStartHrefUrl(), 'Тест') );
                 } else {
-                    menuItems.push(new MenuItem('#/test', 'Тест') );
+                    menuItems.push(new MenuItem(UrlService.getTestHrefUrl(), 'Тест') );
                 }
             }
-            
-            menuItems.push(new MenuItem('#/results/page/1', 'Результаты') );
-            menuItems.push(new MenuItem('#/errors/simple/page/1', 'Ошибки') );
-
+            menuItems.push(new MenuItem(UrlService.getResultsHrefUrl(1), 'Результаты') );
+            menuItems.push(new MenuItem(UrlService.getSimpleErrorsHrefUrl(1), 'Ошибки') );
             $scope.menuItems = menuItems;
 
             $scope.isUserLogged = isUserLogged;
@@ -57,6 +50,18 @@
                 $scope.user = InfoService.getUser();
             }
         }         
+        
+        function logoutSuccess() {
+            InfoService.setUser(null);
+            repaintMenuItems();
+            // Если выход производиться странице которую не должен видеть 
+            // незалогиненный пользователь, то перенаправим на главную.
+            var currentUrl = $location.url();
+            if (currentUrl === UrlService.getTestUrl() )  {
+                $location.url(UrlService.getStartUrl() );
+            }
+        }
+        
     };
     
    

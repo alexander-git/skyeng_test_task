@@ -7,7 +7,8 @@
         '$location',
         '$window',
         'BackendService',
-        'InfoService'
+        'InfoService',
+        'UrlService'
     ];
      
     var StartFormController = function(
@@ -15,7 +16,8 @@
         $location,
         $window,
         BackendService, 
-        InfoService
+        InfoService,
+        UrlService
     ) 
     {
         $scope.usernameMinLength = 3;
@@ -28,7 +30,6 @@
                 
         // Используется в виде когда выполняется ajax-запрос.
         $scope.needShowProcess = false;
-        $scope.needShowErrorMessage = false;
         
         $scope.showError = function(ngModelController, error) {
             if (!ngModelController.$dirty) {
@@ -83,7 +84,7 @@
         function startTestSuccess(data) {
             afterAjaxRequest();
             if (data.success !== undefined) {
-                $location.url('/test');
+                $location.url(UrlService.getTestUrl() );
             } else {
                 $window.alert('Начать тест не удалось!');
             }

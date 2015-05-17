@@ -4,12 +4,31 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Response;
+use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use app\utils\Test;
+use app\exceptions\LogicException;
+
 
 class TestController extends \yii\web\Controller
 {     
     public $layout = 'dictionaryApp';
+    
+    public function behaviors() {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'get-user' => ['get'],
+                    'start-test' => ['post'],
+                    'logout' => ['get'],
+                    'get-test-data' => ['get'],
+                    'answer' => ['post'],
+                    'restart-test' => ['get']
+                ],
+            ],
+        ];
+    }
     
     public function actionIndex() {
         return $this->render('index');
@@ -18,7 +37,7 @@ class TestController extends \yii\web\Controller
     public function actionGetUser() {
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (!$this->hasTest() ) {
-            return null;
+            return [];
         } else {
             return [
                 'username' => $this->getTest()->getUsername() 
@@ -30,7 +49,7 @@ class TestController extends \yii\web\Controller
         $params = Json::decode(trim(file_get_contents('php://input') ), true);
         $username = isset($params['username']) ? $params['username'] : null;
         if ($username === null) {
-            throw new \yii\base\Exception();
+            throw new LogicException();
         }
         
         $this->removeTest();
@@ -63,7 +82,7 @@ class TestController extends \yii\web\Controller
         
         $test = $this->getTest();
         if ($test->isFinished() ) {
-            throw new \yii\base\Exception();  
+            throw new LogicException();  
         }
 
         $responseData = $test->answer($params['answer']);
@@ -92,7 +111,7 @@ class TestController extends \yii\web\Controller
     private function getTest() { 
         $session = Yii::$app->session;
         if (!$session->has('test') ) {
-            throw new \yii\base\Exception();
+            throw new LogicException();
         }     
         return $session['test'];
     }

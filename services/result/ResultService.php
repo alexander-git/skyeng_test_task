@@ -4,6 +4,7 @@ namespace app\services\result;
 
 use Yii;
 use app\models\Result;
+use app\services\SaveResult;
 
 class ResultService {
 
@@ -16,9 +17,9 @@ class ResultService {
         $result->username = $username;
         $result->points = $points;
         if ($result->save() ) {
-            return $result;
+            return new SaveResult($result, true);
         } else {
-            return -1;
+            return new SaveResult($result, false);
         }
     }
     

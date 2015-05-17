@@ -54,26 +54,14 @@
                 selectAnswerError();
             });
         };
-        
-        
+            
         function repaint() {
             var testData = InfoService.getTestData();
             repaintTestState(testData);
             showQuestionIfNeed(testData);
             showFinishStatistiIfNeed(testData);
         }
-                
-                
-        function beforeAjaxRequest() {
-            $scope.needShowProcess = true;
-            _requestExecuted = true;
-        }
-
-        function afterAjaxRequest() {
-            $scope.needShowProcess = false;
-            _requestExecuted = false;
-        }
-
+                    
         function showQuestionIfNeed(testData) {
             _testFinished = (testData.testFinished !== undefined) && (testData.testFinished === true);
             // Если тест завершён или не выслано необходимых данных, то вопрос не показываем.
@@ -127,9 +115,19 @@
             $scope.needShowFinishStatistic = _testFinished; 
         }
         
+        function beforeAjaxRequest() {
+            $scope.needShowProcess = true;
+            _requestExecuted = true;
+        }
+
+        function afterAjaxRequest() {
+            $scope.needShowProcess = false;
+            _requestExecuted = false;
+        }
+        
         function selectAnswerSuccess(data) {
-            afterAjaxRequest();
             InfoService.setTestData(data);
+            afterAjaxRequest();
             repaint();
         }
         
@@ -139,8 +137,8 @@
         }
         
         function restartTestSuccess(data) {
-            afterAjaxRequest();
             InfoService.setTestData(data);
+            afterAjaxRequest();
             repaint();
         }
         

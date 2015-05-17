@@ -1,7 +1,8 @@
 (function() {
                         
     var injectParams = [];
-      
+    
+    // Предназначен для хранения информации о пользователе и состоянии теста. 
     function InfoService() {
         
         var _user = null;

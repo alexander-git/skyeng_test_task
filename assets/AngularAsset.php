@@ -8,6 +8,7 @@ use yii\web\View;
 class AngularAsset extends AssetBundle
 {
     public $sourcePath = '@bower';
+    
     public $js = [
         'angular/angular.js',
         'angular-route/angular-route.js'

@@ -3,21 +3,30 @@
     var injectParams = [
         '$scope', 
         '$routeParams',
+        'UrlService',
         'errorsData'
     ];
      
-    var ErrorController = function($scope, $routeParams, errorsData)  {
+    var ErrorController = function($scope, $routeParams, UrlService, errorsData)  {
         var needShowSimpleErrors = $routeParams.type === 'simple';     
         
+        // Создаём ссылки для передачи их в вид.
         var pageHrefs = [];
         for (var i = 1; i <= errorsData.numberPages; i++) {
             if (needShowSimpleErrors) {
-                pageHrefs.push('#/errors/simple/page/' + i);
+                pageHrefs.push(UrlService.getSimpleErrorsHrefUrl(i) );
             } else {
-                pageHrefs.push('#/errors/composite/page/' + i);
+                pageHrefs.push(UrlService.getCompositeErrorsHrefUrl(i) );
             }
         }
-        $scope.currentPage = $routeParams.page;
+        var currentPage = $routeParams.page;
+        if (needShowSimpleErrors) {
+            $scope.simpleErrorsHref = UrlService.getSimpleErrorsHrefUrl(currentPage);
+            $scope.compositeErrorsHref = UrlService.getCompositeErrorsHrefUrl(1);
+        } else {
+            $scope.simpleErrorsHref = UrlService.getSimpleErrorsHrefUrl(1);
+            $scope.compositeErrorsHref = UrlService.getCompositeErrorsHrefUrl(currentPage);
+        }
         $scope.needShowSimpleErrors = needShowSimpleErrors;
         $scope.pageHrefs = pageHrefs;
         $scope.errors = errorsData.errors;
