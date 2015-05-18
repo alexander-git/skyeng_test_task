@@ -1,6 +1,5 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
 
 class m150513_075159_installDictionary extends Migration
@@ -10,6 +9,7 @@ class m150513_075159_installDictionary extends Migration
         $this->batchInsert('{{%word}}', 
             ['eng', 'rus'],
             [
+                ['apple', 'яблоко'],
                 ['pear', 'груша'],
                 ['orange', 'апельсин'],
                 ['grape', 'виноград'],
