@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div ng-show="needShowProcess" class="-marginBottom20 -centerTextH">
+    <div ng-class="{'-hidden' : !needShowProcess}" class="-marginBottom20 -centerTextH">
         <img src="/images/loadingLine.gif" class="processLine">
     </div>
 
@@ -22,11 +22,11 @@
             <span class="question__word">"{{word}}"</span>
         </div>
 
-        <div ng-show="needShowWrongAnswerMessage" class="wrongAnswerMessage -marginTop10 -errorMessage -centerBlock">
+        <div ng-class="{'-hidden' : !needShowWrongAnswerMessage}" class="wrongAnswerMessage -marginTop10 -errorMessage -centerBlock">
             Ответ неверный
         </div>
 
-        <div class="variants -centerBlock -clearfix -marginTop10">
+        <div class="variants -centerBlock -clearfix -marginTop5">
             <div ng-repeat="answerItem in answerItems" class="variants__variantContainer">
                 <div ng-if="!answerItem.isWrong" ng-click="selectAnswer(answerItem.text)" class="variants__variant variants__variant--unknown">{{answerItem.text}}</div>
                 <div ng-if="answerItem.isWrong" class="variants__variant variants__variant--wrong">{{answerItem.text}}</div>

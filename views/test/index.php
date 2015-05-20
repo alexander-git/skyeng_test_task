@@ -9,4 +9,4 @@ $this->title = 'Словарь';
 ?>
 <div ng-app="dictionaryApp">
     <div ng-view></div>
-</div>
+</div>    

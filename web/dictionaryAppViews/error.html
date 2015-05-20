@@ -4,11 +4,8 @@
     </div>
     <div ng-if="errors.length !== 0">
         <div class="-centerTextH">       
-            <a ng-if="needShowSimpleErrors" ng-href="{{simpleErrorsHref}}" class="errorType errorType--active -darkBlue">Слово</a>
-            <a ng-if="needShowSimpleErrors" ng-href="{{compositeErrorsHref}}" class="errorType">Слово и ответ</a>
-
-            <a ng-if="!needShowSimpleErrors" ng-href="{{simpleErrorsHref}}" class="errorType">Слово</a>
-            <a ng-if="!needShowSimpleErrors" ng-href="{{compositeErrorsHref}}" class="errorType errorType--active -darkBlue">Слово и ответ</a>
+            <a ng-href="{{simpleErrorsHref}}" ng-class="{'errorType' : true, 'errorType--active -darkBlue' : needShowSimpleErrors}">Слово</a>
+            <a ng-href="{{compositeErrorsHref}}" ng-class="{'errorType' : true, 'errorType--active -darkBlue' : !needShowSimpleErrors}">Слово и ответ</a>
         </div>
         <table class="spreadsheet -centerBlock -marginTop20">
             <thead>

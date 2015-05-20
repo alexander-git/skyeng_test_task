@@ -13,12 +13,12 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : '/dictionaryAppViews/index.html',
         contentUrl : '/dictionaryAppViews/start.html', 
         resolve : {
-            // Напрямую данные полученные через resolve 
-            // в контроллер внедряются не всегда. BackendService кроме возврата 
-            // данных в случае успешного выполнения запроса, также сохраняет их 
-            // в InfoService, который уже  в свою очередь может быть 
-            // внедрён в любой нужный контроллер. Так сделано потому, что эти
-            // данные могут быть нужны в нескольких контроллерах 
+            // Напрямую данные полученные через resolve используются для
+            // внедрения в контроллер не всегда. BackendService кроме возврата 
+            // некоторых данных в случае успешного выполнения запроса, также 
+            // сохраняет их  в InfoService, который уже  в свою очередь может 
+            // быть внедрён в любой нужный контроллер. Так сделано потому что 
+            // эти данные могут быть нужны в нескольких контроллерах 
             // на одной странице.
             user : ['BackendService', function(BackendService) {
                 return BackendService.getUser();
@@ -100,11 +100,12 @@ app.run(['$rootScope', '$route', function($rootScope, $route) {
 }]);
 
 // При смене адреса показываем, что идёт процесс загрузки.
-/*
 app.run(['$rootScope', function($rootScope) {
     
     $rootScope.needShowLoading = false;
     
+    /*  
+    // Стоит расскомментировать на реальном хостинге.  
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
         $rootScope.needShowLoading = true;
     });
@@ -116,5 +117,5 @@ app.run(['$rootScope', function($rootScope) {
     $rootScope.$on('$routeChangeError', function(event, next, current) {
         $rootScope.needShowLoading = false;
     });
+    */
 }]);
-*/
