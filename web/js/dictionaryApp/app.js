@@ -105,7 +105,7 @@ app.run(['$rootScope', function($rootScope) {
     $rootScope.needShowLoading = false;
     
     /*  
-    // Стоит расскомментировать на реальном хостинге.  
+    // Стоит раскомментировать на реальном хостинге.  
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
         $rootScope.needShowLoading = true;
     });
