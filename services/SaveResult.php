@@ -19,12 +19,12 @@ class SaveResult extends \yii\base\Object {
         $this->_isSuccess = $isSuccess;
     }
     
-    public function setIsSuccess($isSuccess) {
-        $this->_isSuccess = $isSuccess;
-    }
-    
     public function getIsSuccess() {
         return $this->_isSuccess;
+    }
+    
+    public function getModel() {
+        return $this->_model;
     }
 
 }
